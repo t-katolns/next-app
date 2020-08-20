@@ -15,7 +15,7 @@ const HeadLayout = styled.header`
   }
 `;
 type Props = {
-  pageName: string;
+  pageName?: string;
 };
 
 export const Header: FunctionComponent<Props> = ({ pageName }) => {

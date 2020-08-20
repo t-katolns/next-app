@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
-const Text = styled.p<{
+const Text = styled.div<{
   weight: number;
   size: number;
   height: number;
