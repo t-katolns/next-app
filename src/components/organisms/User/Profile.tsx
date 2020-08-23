@@ -60,7 +60,7 @@ export const Profile: FunctionComponent<Props> = ({
         <Label weight={700}>{education.name}</Label>
         <Label>{education.department}</Label>
       </LabelStyle>
-      <Typography size={12} height={18} weight={700} color={"blue"}>
+      <Typography size={12} height={18} weight={700} color={"#008000"}>
         好きなこと
       </Typography>
       <LabelStyle>{likes}</LabelStyle>

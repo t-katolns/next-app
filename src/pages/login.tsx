@@ -6,7 +6,7 @@ import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 
 const TypographyStyled = styled(Typography)`
-  margin: auto;
+  text-align: center;
 `;
 
 interface IState {
