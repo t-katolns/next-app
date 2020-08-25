@@ -6,7 +6,7 @@ import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 
 const TypographyStyled = styled(Typography)`
-  text-align: center;
+  margin: auto;
 `;
 
 interface IState {
@@ -34,17 +34,33 @@ const Login: FunctionComponent = () => {
 
   const loginhandleInputChange = (e: Echange) => {
     if (isButtonDisabled) {
-      setState({ ...state, mailAddress: e.target.value, disabled: true });
+      setState({
+        ...state,
+        mailAddress: e.target.value,
+        disabled: isButtonDisabled,
+      });
     } else {
-      setState({ ...state, mailAddress: e.target.value, disabled: false });
+      setState({
+        ...state,
+        mailAddress: e.target.value,
+        disabled: isButtonDisabled,
+      });
     }
   };
 
   const PasswordhandleInputChange = (e: Echange) => {
     if (isButtonDisabled) {
-      setState({ ...state, password: e.target.value, disabled: false });
+      setState({
+        ...state,
+        password: e.target.value,
+        disabled: isButtonDisabled,
+      });
     } else {
-      setState({ ...state, password: e.target.value, disabled: true });
+      setState({
+        ...state,
+        password: e.target.value,
+        disabled: isButtonDisabled,
+      });
     }
   };
 
