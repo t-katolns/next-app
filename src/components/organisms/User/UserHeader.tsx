@@ -14,6 +14,12 @@ const Grid = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 `;
 
+const MediaGridItem = styled(GridItem) {
+  @media (max-width: 450px) {
+    grid-auto-flow: row;
+  }
+}
+
 const LabelStyle = styled(Label)`
   grid-auto-columns: max-content;
   display: grid;
