@@ -28,7 +28,7 @@ type Props = {
   company: string;
   area: string;
   reviewCount: number;
-  careerStatuse: string;
+  statuse: string;
   purpose: string;
   img: string;
 };
@@ -39,7 +39,7 @@ export const UserHeader: FunctionComponent<Props> = ({
   company,
   area,
   reviewCount,
-  careerStatuse,
+  statuse,
   purpose,
   img,
 }) => {
@@ -71,18 +71,18 @@ export const UserHeader: FunctionComponent<Props> = ({
         </LabelStyle>
       </GridItem>
       <GridItem theme={{ column: "2/6", row: "7/9" }}>
-        <ColorLabel background={"#008000"} color={"#0068B4"}>
+        <ColorLabel background={"#99FFFF"} color={"#525E6D"}>
           <img src="images/user/career_statuse.svg" />
-          {careerStatuse}
+          {statuse}
         </ColorLabel>
       </GridItem>
-      <GridItem theme={{ column: "6/9", row: "7/9" }}>
-        <ColorLabel background={"#008000"} color={"#525E6D"}>
+      <GridItem theme={{ column: "6/10", row: "7/9" }}>
+        <ColorLabel background={"#99FFFF"} color={"#525E6D"}>
           <img src="images/user/purpose.svg" />
           {purpose}
         </ColorLabel>
       </GridItem>
-      <GridItem theme={{ column: "9/10", row: "7/9" }}>
+      <GridItem theme={{ column: "10/11", row: "7/9" }}>
         <img src="images/user/question.svg" />
       </GridItem>
     </Grid>

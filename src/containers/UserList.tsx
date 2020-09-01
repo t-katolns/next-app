@@ -25,7 +25,7 @@ export const UserList: FunctionComponent<Props> = ({ usersList }) => {
           job={user.job}
           company={user.company}
           purpose={user.pourpose}
-          careerStatuse={user.careerStatuse}
+          statuse={user.statuse}
           img={user.img}
         />
       ))}

@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Grid = styled.div`
   display: grid;
-  height: 150px;
+  height: 100px;
   grid-row-gap: 7px;
   grid-column-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

@@ -4,8 +4,8 @@
     "name": "Wada aya",
     "job": "エンジニア",
     "company": "株式会社AAAA",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "like": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -13,8 +13,8 @@
     "name": "Wada aaaa",
     "job": "エンジニア",
     "company": "株式会社BBBB",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "like": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -22,8 +22,8 @@
     "name": "Wada uuuu",
     "job": "エンジニア",
     "company": "株式会社CCCC",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "like": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -31,8 +31,8 @@
     "name": "Wada oooo",
     "job": "エンジニア",
     "company": "株式会社DDDD",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "like": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -40,8 +40,8 @@
     "name": "Wada bbbb",
     "job": "エンジニア",
     "company": "株式会社HHHH",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "like": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -49,8 +49,8 @@
     "name": "Wada pppp",
     "job": "エンジニア",
     "company": "株式会社IIII",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "pourpose": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -58,8 +58,8 @@
     "name": "Wada iiii",
     "job": "エンジニア",
     "company": "株式会社JJJJ",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "pourpose": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   },
   {
@@ -67,8 +67,8 @@
     "name": "Wada wwww",
     "job": "エンジニア",
     "company": "株式会社KKKK",
-    "pourpose": "転職を検討している",
-    "careerStatuse": "気軽にあって話したい",
+    "pourpose": "読書、映画鑑賞、スポーツ観戦",
+    "statuse": "一週間前にログイン",
     "img": "/images/test.jpg"
   }
 ]

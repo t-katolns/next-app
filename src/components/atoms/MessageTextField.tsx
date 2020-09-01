@@ -20,7 +20,7 @@ export const MessageTextField: FunctionComponent<Props> = ({}) => {
   return (
     <Section>
       <TextFieldStyle
-        placeholder={"スカウトメッセージを入力"}
+        placeholder={"メッセージを入力"}
         radius={24}
         color={"#E1E6ED"}
       />

@@ -19,7 +19,7 @@ type Props = {
   name: string;
   job: string;
   company: string;
-  careerStatuse: string;
+  statuse: string;
   purpose: string;
   img: string;
 };
@@ -28,7 +28,7 @@ export const User: FunctionComponent<Props> = ({
   name,
   job,
   company,
-  careerStatuse,
+  statuse,
   purpose,
   img,
 }) => {
@@ -46,7 +46,7 @@ export const User: FunctionComponent<Props> = ({
         </Label>
         <ColorLabel width={180} background={"#E0EEFA"} color={"#0068B4"}>
           <img src="images/user/career_statuse.svg" />
-          {careerStatuse}
+          {statuse}
         </ColorLabel>
         <GridItem theme={{ column: "7/12", row: "11/12" }}>
           <ColorLabel width={150} background={"#F0F2F5"} color={"#525E6D"}>

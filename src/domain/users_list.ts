@@ -3,6 +3,6 @@ export interface IUsersList {
   job: string;
   company: string;
   pourpose: string;
-  careerStatuse: string;
+  statuse: string;
   img: string;
 }

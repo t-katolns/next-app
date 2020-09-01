@@ -9,7 +9,7 @@ type Props = {
   company: string;
   area: string;
   reviewCount: number;
-  careerStatuse: string;
+  statuse: string;
   purpose: string;
   img: string;
 };
@@ -20,7 +20,7 @@ export const MessageBox: FunctionComponent<Props> = ({
   company,
   area,
   reviewCount,
-  careerStatuse,
+  statuse,
   purpose,
   img,
 }) => {
@@ -48,7 +48,7 @@ export const MessageBox: FunctionComponent<Props> = ({
           company={company}
           area={area}
           reviewCount={reviewCount}
-          careerStatuse={careerStatuse}
+          statuse={statuse}
           purpose={purpose}
           img={img}
         />
