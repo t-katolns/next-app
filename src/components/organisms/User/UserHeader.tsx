@@ -14,11 +14,11 @@ const Grid = styled.div`
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 `;
 
-const MediaGridItem = styled(GridItem) {
+const MediaGridItem = styled(GridItem)`
   @media (max-width: 450px) {
     grid-auto-flow: row;
   }
-}
+`;
 
 const LabelStyle = styled(Label)`
   grid-auto-columns: max-content;
@@ -76,21 +76,21 @@ export const UserHeader: FunctionComponent<Props> = ({
           <img src="/images/user/yamagata.svg" />
         </LabelStyle>
       </GridItem>
-      <GridItem theme={{ column: "2/6", row: "7/9" }}>
+      <MediaGridItem theme={{ column: "2/6", row: "7/9" }}>
         <ColorLabel background={"#99FFFF"} color={"#525E6D"}>
           <img src="images/user/career_statuse.svg" />
           {statuse}
         </ColorLabel>
-      </GridItem>
-      <GridItem theme={{ column: "6/10", row: "7/9" }}>
+      </MediaGridItem>
+      <MediaGridItem theme={{ column: "6/10", row: "7/9" }}>
         <ColorLabel background={"#99FFFF"} color={"#525E6D"}>
           <img src="images/user/purpose.svg" />
           {purpose}
         </ColorLabel>
-      </GridItem>
-      <GridItem theme={{ column: "10/11", row: "7/9" }}>
+      </MediaGridItem>
+      <MediaGridItem theme={{ column: "10/11", row: "7/9" }}>
         <img src="images/user/question.svg" />
-      </GridItem>
+      </MediaGridItem>
     </Grid>
   );
 };

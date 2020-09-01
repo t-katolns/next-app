@@ -8,8 +8,17 @@ const Item = styled.div<{ theme: any }>`
 `;
 type Props = {
   theme: any;
+  className?: string;
 };
 
-export const GridItem: FunctionComponent<Props> = ({ theme, children }) => {
-  return <Item theme={theme}>{children}</Item>;
+export const GridItem: FunctionComponent<Props> = ({
+  theme,
+  children,
+  className,
+}) => {
+  return (
+    <Item theme={theme} className={className}>
+      {children}
+    </Item>
+  );
 };
