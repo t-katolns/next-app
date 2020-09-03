@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -30,7 +30,7 @@ const SelectBox = styled.div`
       border-radius: 0 4px 4px 0;
     }
     ::-webkit-scrollbar-thumb {
-      background: #6ab4eb;
+      background: #c7ced7;
       border-radius: 0 4px 4px 0;
     }
   }
@@ -84,36 +84,21 @@ const SelectBox = styled.div`
     background-repeat: no-repeat;
   }
 `;
-type Props = {
-  month: number;
-};
-export const SelectDate: FunctionComponent = () => {
-  const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  if (process.browser) {
-    // refと使ってみたがundifindとなってしまう
-    // this.myRef = React.createRef();
-    // const selected = this.ref.current;
 
-    const selected = document.querySelector(".selected");
-    const optionContainer = document.querySelector(".option-container");
-    console.log(selected);
-    const optionsList = document.querySelectorAll(".option");
-    selected.addEventListener("click", () => {
-      optionContainer.classList.toggle("active");
-    });
-    optionsList.forEach((o) => {
-      o.addEventListener("click", () => {
-        selected.innerHTML = o.querySelector("label").innerHTML;
-        optionContainer.classList.remove("active");
-      });
-    });
-  }
+export const SelectDate: FunctionComponent = () => {
+  const [isActive, setIsActive] = useState(false);
+  const [mnth, setMonth] = useState("");
+  const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  const Click = () => {
+    setIsActive(true);
+  };
   return (
     <Container>
       <SelectBox>
-        <div className="option-container">
+        <div className={"optionContainer" + isActive ? "active" : ""}>
           {month.map((month, i) => (
-            <div className="option" key={i}>
+            <div className={"option" + isActive ? "" : "active"} key={i}>
               <input type="radio" className="radio" />
               <label htmlFor="automobiles">
                 <p className="name">{month}月</p>
@@ -121,9 +106,7 @@ export const SelectDate: FunctionComponent = () => {
             </div>
           ))}
         </div>
-        <div className="selected" ref={this.myRef}>
-          年
-        </div>
+        <div className="selected" onClick={Click}></div>
       </SelectBox>
     </Container>
   );

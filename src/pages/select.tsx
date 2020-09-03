@@ -1,11 +1,15 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
   box-sizing: border-box;
 `;
 
-const SelectBox = styled.div`
+type TSelectBox = {
+  active: boolean;
+  month: number;
+};
+const SelectBox = styled.div<TSelectBox>`
   display: flex;
   width: 136px;
   flex-direction: column;
@@ -26,18 +30,20 @@ const SelectBox = styled.div`
     text-align: center;
     ::-webkit-scrollbar {
       width: 3px;
-      background: #c7ced7;
+      background: #d3d6db;
       border-radius: 0 4px 4px 0;
     }
     ::-webkit-scrollbar-thumb {
-      background: #6ab4eb;
+      background: #66b7f2;
       border-radius: 0 4px 4px 0;
     }
-  }
-  .active {
+    ${({ active }: TSelectBox) =>
+      active &&
+      `
     max-height: 150px;
     opacity: 1;
     overflow-y: scroll;
+  `}
   }
   .option,
   .selected {
@@ -53,21 +59,33 @@ const SelectBox = styled.div`
   .radio {
     display: none;
   }
+  .holder {
+    opacity: ${({ active }: TSelectBox) => (active ? 1 : 0)};
+    font-size: 8px;
+    position: relative;
+    top: -10px;
+    color: #0068b4;
+  }
+  .select-name {
+    opacity: ${({ active }: TSelectBox) => (active ? 0 : 1)};
+  }
   .selected {
     background: #f6f7f9;
     border-radius: 8px;
     margin-bottom: 8px;
     position: relative;
     order: 0;
-    .name {
+    p {
       display: inline-block;
-      color: rgba(0, 0, 0, 0.87);
+      color: ${({ month }: TSelectBox) =>
+        month ? "rgba(0, 0, 0, 0.87)" : "#A3AFBF"};
       font-size: 16px;
     }
   }
   .selected::after {
     content: "";
-    background: url("images/arrow_down.svg");
+    background: ${({ active }: TSelectBox) =>
+      `url("images/arrow_${active ? "up" : "down"}.svg");`};
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: 30px;
@@ -77,53 +95,48 @@ const SelectBox = styled.div`
     top: 18px;
     right: 10px;
     transition: all 0.4s;
-  }
-  .option-container.active + .selected::after {
-    background: url("images/arrow_up.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
+    .select-name {
+      opacity: 0;
+    }
   }
 `;
 
-const Select: FunctionComponent = () => {
-  const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  if (process.browser) {
-    const selected = document.querySelector(".selected");
-    const optionContainer = document.querySelector(".option-container");
-    console.log(optionContainer);
+export const Select: FunctionComponent = () => {
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const [active, setActive] = useState<boolean>(false);
+  const [selectedMonth, setSelectedMonth] = useState<number>(0);
 
-    const optionsList = document.querySelectorAll(".option");
+  const handleActive = () => {
+    setActive(!active);
+  };
 
-    selected.addEventListener("click", () => {
-      optionContainer.classList.toggle("active");
-    });
-
-    optionsList.forEach((o) => {
-      o.addEventListener("click", () => {
-        selected.innerHTML = o.querySelector("label").innerHTML;
-        optionContainer.classList.remove("active");
-      });
-    });
-  }
+  const handleSelectingOption = (month: number) => {
+    setSelectedMonth(month);
+    setActive(false);
+  };
 
   return (
-    <>
-      <Container>
-        <SelectBox>
-          <div className="option-container">
-            {month.map((month, i) => (
-              <div className="option" key={i}>
-                <input type="radio" className="radio" />
-                <label htmlFor="automobiles">
-                  <p className="name">{month}月</p>
-                </label>
-              </div>
-            ))}
-          </div>
-          <div className="selected">年</div>
-        </SelectBox>
-      </Container>
-    </>
+    <Container>
+      <SelectBox active={active} month={selectedMonth}>
+        <div className="option-container">
+          {months.map((month, i) => (
+            <div
+              className="option"
+              key={i}
+              onClick={() => handleSelectingOption(month)}
+            >
+              <label htmlFor="automobiles">
+                <p className="name">{month}月</p>
+              </label>
+            </div>
+          ))}
+        </div>
+        <div className="selected" onClick={handleActive}>
+          <span className="holder">月</span>
+          <p className="select-name">{selectedMonth || ""}月</p>
+        </div>
+      </SelectBox>
+    </Container>
   );
 };
 
