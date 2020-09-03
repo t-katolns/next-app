@@ -1,29 +1,13 @@
-import React, { FunctionComponent, useState } from "react";
-import { Modal } from "../components/atoms/Modal";
+import { DecisionModal } from "components/molecules/Modal/DecisionModal";
+import React, { FunctionComponent } from "react";
 
-const BUTTON_WRAPPER_STYLES = {
-  position: "relative",
-  zIndex: 10,
-};
+export const Test: FunctionComponent = () => {
+  // const [isOpen, setIsOpen] = useState(false);
 
-const OTHER_CONTENT_STYLES = {
-  position: "relative",
-  zIndex: 11,
-  backgroundColor: "red",
-  padding: "10px",
-};
-
-const Test: FunctionComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div style={BUTTON_WRAPPER_STYLES}>
-        <button onClick={() => setIsOpen(true)}>Open Modal</button>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          モーダル
-        </Modal>
-      </div>
-      <div style={OTHER_CONTENT_STYLES}> OtherContent </div>
+      {/* <button onClick={() => setIsOpen(true)}>Open Modal</button> */}
+      <DecisionModal url={"images/test.jpg"} name={"太郎"}></DecisionModal>
     </>
   );
 };
