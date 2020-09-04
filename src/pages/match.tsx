@@ -1,4 +1,5 @@
 import { MatchContainer } from "components/layouts/MatchContainer";
+import { DecisionModal } from "components/molecules/Modal/DecisionModal";
 import { Header } from "components/organisms/Header";
 import Sidebar from "components/organisms/Sidebar";
 import { MessageContents } from "containers/MessageContents";
@@ -23,6 +24,10 @@ const Match: FunctionComponent = () => {
     <>
       <Header pageName={"マッチング"}></Header>
       <Sidebar></Sidebar>
+      <DecisionModal
+        url={"images/test.jpg"}
+        name={"あああ　あああ"}
+      ></DecisionModal>
       <MatchContainer>
         <SectionSearch>
           <UserList usersList={UsersList}></UserList>

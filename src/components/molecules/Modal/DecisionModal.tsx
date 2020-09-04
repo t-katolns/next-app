@@ -1,10 +1,10 @@
 import { Modal } from "components/atoms/Modal";
 import { RoundedIcon } from "components/atoms/RoundedIcon";
 import { Typography } from "components/atoms/Typography";
+import { Box } from "components/layouts/Box";
 import { Flex } from "components/layouts/Flex";
+import { SelectDate } from "components/molecules/Select/SelectDate";
 import React, { FunctionComponent } from "react";
-import { SelectDate } from "../Select/SelectDate";
-
 type Props = {
   url: string;
   name: string;
@@ -25,7 +25,15 @@ export const DecisionModal: FunctionComponent<Props> = ({ url, name }) => {
       <Typography size={12} weight={500} color={"#525E6D"}>
         生年月日
       </Typography>
-      <SelectDate />
+      <Box mt={15} />
+      <Flex justifyContent={"space-between"}>
+        <SelectDate target={"年"} />
+        <SelectDate target={"月"} />
+        <SelectDate target={"日"} />
+      </Flex>
+      <div style={{ position: "relative" }}>
+        <div>ssssssssssssssssssss</div>
+      </div>
     </Modal>
   );
 };

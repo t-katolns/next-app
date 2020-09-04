@@ -5,7 +5,11 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-const SelectBox = styled.div`
+type TSelectBox = {
+  active: boolean;
+  month: number;
+};
+const SelectBox = styled.div<TSelectBox>`
   display: flex;
   width: 136px;
   flex-direction: column;
@@ -26,18 +30,20 @@ const SelectBox = styled.div`
     text-align: center;
     ::-webkit-scrollbar {
       width: 3px;
-      background: #c7ced7;
+      background: #d3d6db;
       border-radius: 0 4px 4px 0;
     }
     ::-webkit-scrollbar-thumb {
-      background: #c7ced7;
+      background: #66b7f2;
       border-radius: 0 4px 4px 0;
     }
-  }
-  .active {
+    ${({ active }: TSelectBox) =>
+      active &&
+      `
     max-height: 150px;
     opacity: 1;
     overflow-y: scroll;
+  `}
   }
   .option,
   .selected {
@@ -53,21 +59,33 @@ const SelectBox = styled.div`
   .radio {
     display: none;
   }
+  .holder {
+    opacity: ${({ active }: TSelectBox) => (active ? 1 : 0)};
+    font-size: 8px;
+    position: relative;
+    top: -10px;
+    color: #0068b4;
+  }
+  .select-name {
+    opacity: ${({ active }: TSelectBox) => (active ? 0 : 1)};
+  }
   .selected {
     background: #f6f7f9;
     border-radius: 8px;
     margin-bottom: 8px;
     position: relative;
     order: 0;
-    .name {
+    p {
       display: inline-block;
-      color: rgba(0, 0, 0, 0.87);
+      color: ${({ month }: TSelectBox) =>
+        month ? "rgba(0, 0, 0, 0.87)" : "#A3AFBF"};
       font-size: 16px;
     }
   }
   .selected::after {
     content: "";
-    background: url("images/arrow_down.svg");
+    background: ${({ active }: TSelectBox) =>
+      `url("images/arrow_${active ? "up" : "down"}.svg");`};
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: 30px;
@@ -77,37 +95,81 @@ const SelectBox = styled.div`
     top: 18px;
     right: 10px;
     transition: all 0.4s;
-  }
-  .option-container.active + .selected::after {
-    background: url("images/arrow_up.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
+    .select-name {
+      opacity: 0;
+    }
   }
 `;
-
-export const SelectDate: FunctionComponent = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [mnth, setMonth] = useState("");
-  const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  const Click = () => {
-    setIsActive(true);
+type Props = {
+  year?: number;
+  month?: number;
+  date?: number;
+  target: string;
+};
+export const SelectDate: FunctionComponent<Props> = ({ target }) => {
+  const year = new Date().getFullYear();
+  const years = [...Array(9)].map((_, i) => year + i);
+  const dates = [...Array(31)].map((_, i) => i + 1);
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const Values = () => {
+    switch (target) {
+      case "年":
+        return years;
+      case "月":
+        return months;
+      case "日":
+        return dates;
+    }
   };
+  const [active, setActive] = useState<boolean>(false);
+  const [selectedMonth, setSelectedMonth] = useState<number>(0);
+
+  const handleActive = () => {
+    setActive(!active);
+  };
+
+  const handleSelectingOption = (month: number) => {
+    setSelectedMonth(month);
+    setActive(false);
+  };
+
   return (
-    <Container>
-      <SelectBox>
-        <div className={"optionContainer" + isActive ? "active" : ""}>
-          {month.map((month, i) => (
-            <div className={"option" + isActive ? "" : "active"} key={i}>
-              <input type="radio" className="radio" />
-              <label htmlFor="automobiles">
-                <p className="name">{month}月</p>
-              </label>
+    <div style={{ position: "relative" }}>
+      <Container>
+        <SelectBox active={active} month={selectedMonth}>
+          <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              zIndex: 99999999999999999,
+            }}
+          >
+            <div className="option-container">
+              {Values().map((month, i) => (
+                <div
+                  className="option"
+                  key={i}
+                  onClick={() => handleSelectingOption(month)}
+                >
+                  <label htmlFor="automobiles">
+                    <p className="name">
+                      {month}
+                      {target}
+                    </p>
+                  </label>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="selected" onClick={Click}></div>
-      </SelectBox>
-    </Container>
+          </div>
+          <div className="selected" onClick={handleActive}>
+            <span className="holder">{target}</span>
+            <p className="select-name">
+              {selectedMonth || ""}
+              {target}
+            </p>
+          </div>
+        </SelectBox>
+      </Container>
+    </div>
   );
 };
