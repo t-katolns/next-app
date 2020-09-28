@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Main = styled.main`
   padding-left: 50px;

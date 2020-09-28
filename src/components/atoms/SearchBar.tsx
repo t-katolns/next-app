@@ -1,34 +1,49 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
-const Search = styled.div`
+const Search = styled.div<{ isSearchCardIcon: boolean }>`
   display: flex;
+  width: 100%;
+  background: #e1e6ed;
+  border-radius: 8px;
   input {
     width: 100%;
     height: 36px;
-    background: #e1e6ed;
     border-radius: 0 8px 8px 0;
+    background: transparent;
     border: none;
     outline: none;
   }
-  img {
+  .searchIcon {
     padding: 0 8px;
-    border-radius: 8px 0 0 8px;
-    background: #e1e6ed;
+  }
+  .settingsIcon {
+    padding: 0 8px;
+    display: ${(props) => (props.isSearchCardIcon ? 'block' : 'none')};
   }
 `;
 
 type Props = {
   placeholderText: string;
+  isSearchCardIcon?: boolean;
+  isSearchCardOpen?: () => void;
 };
 
-export const SearchBar: FunctionComponent<Props> = ({ placeholderText }) => {
+export const SearchBar: FunctionComponent<Props> = ({
+  placeholderText,
+  isSearchCardIcon,
+  isSearchCardOpen,
+}) => {
   return (
     <>
-      <Search>
-        {/* <img src={searchIcon} /> */}
-        <img src="/images/search/search_icon.svg" />
+      <Search isSearchCardIcon={isSearchCardIcon}>
+        <img className="searchIcon" src="/images/search/search_icon.svg" />
         <input placeholder={placeholderText} />
+        <img
+          className="settingsIcon"
+          onClick={isSearchCardOpen}
+          src="/images/search_setting.svg"
+        />
       </Search>
     </>
   );

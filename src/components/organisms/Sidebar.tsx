@@ -1,5 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import AuthService from "utils/AuthService";
+
+const auth = new AuthService();
+
 // import Logo from "./Logo";
 const SidebarStyle = styled.nav`
   position: fixed;
@@ -8,17 +12,18 @@ const SidebarStyle = styled.nav`
   flex-direction: column;
   width: 50px;
   height: 100vh;
-  background: #0000cd;
   box-shadow: 1px 0px 0px #e1e6ed;
-  z-index: 1;
+  z-index: 10;
   :hover {
     width: 175px;
+    transition: 100ms;
     ul {
       margin-left: 10px;
       align-items: flex-start;
     }
     span {
-      display: inline;
+      display: inline-block;
+      margin-left: 10px;
     }
   }
 `;
@@ -49,13 +54,17 @@ const List = styled.li`
 `;
 
 export const Sidebar: FunctionComponent = () => {
+  const handleLogout = () => {
+    auth.logout();
+  };
+
   return (
     <SidebarStyle>
       {/* <Logo /> */}
       <Menu>
         <List>
           <img src="/images/navbar/scout.svg" />
-          <span>メッセージ</span>
+          <span>ユーザー</span>
         </List>
         <List>
           <img src="/images/navbar/matching.svg" />
@@ -64,6 +73,9 @@ export const Sidebar: FunctionComponent = () => {
         <List>
           <img src="/images/navbar/vector.svg" />
           <span>プロフィール</span>
+        </List>
+        <List onClick={handleLogout}>
+          <span>ログアウト</span>
         </List>
       </Menu>
     </SidebarStyle>

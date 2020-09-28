@@ -1,37 +1,69 @@
-import React from "react";
-import Portal from "./Portal";
+import { Portal } from 'components/atoms/Portal';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
-const MODAL_STYLE = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  backgroundColor: "#FFF",
-  padding: "50px",
-  zIndex: 1000,
-};
+type TOberFlow = 'auto' | 'hidden' | 'scroll';
+
+const ModalStyle = styled.div<{
+  padding: number;
+  width: number;
+  height: number;
+  radius: number;
+  overflowY: TOberFlow;
+}>`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  padding: ${(props) => props.padding}px;
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  border-radius: ${(props) => props.radius}px;
+  overflow-y: ${(props) => props.overflowY};
+`;
 
 const OVERLAY_STYLES = {
-  position: "fixed",
+  position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: "rgba(109, 123, 143, 0.7)",
+  backgroundColor: 'rgba(109, 123, 143, 0.7)',
   zIndex: 1000,
 };
 
-export const Modal = ({ open, onClose, children }) => {
-  if (!open) return null;
+type Props = {
+  padding: number;
+  width: number;
+  height: number;
+  radius?: number;
+  overflowY?: TOberFlow;
+};
+
+export const Modal: FunctionComponent<Props> = ({
+  padding,
+  width,
+  height,
+  radius,
+  overflowY,
+  children,
+}) => {
+  if (!process.browser) return null;
   return (
-    <>
-      <Portal>
-        <div style={OVERLAY_STYLES} />
-        <div style={MODAL_STYLE}>
-          <button onClick={onClose}>Close Modal</button>
-          {children}
-        </div>
-      </Portal>
-    </>
+    <Portal>
+      <div style={OVERLAY_STYLES} />
+      <ModalStyle
+        padding={padding}
+        width={width}
+        height={height}
+        radius={radius}
+        overflowY={overflowY}
+      >
+        {children}
+      </ModalStyle>
+    </Portal>
   );
 };

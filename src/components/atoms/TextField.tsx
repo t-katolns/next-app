@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import { EIchange } from 'domain/type';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 const Input = styled.input<{ radius: number; color: string }>`
   border: 1px solid gray;
   border-radius: ${(props) => props.radius}px;
@@ -13,6 +14,7 @@ type Props = {
   radius: number;
   color: string;
   className?: string;
+  onChange?: (e: EIchange) => void;
 };
 
 export const TextField: FunctionComponent<Props> = ({
@@ -20,6 +22,7 @@ export const TextField: FunctionComponent<Props> = ({
   radius,
   color,
   className,
+  onChange,
 }) => {
   return (
     <Input
@@ -27,6 +30,7 @@ export const TextField: FunctionComponent<Props> = ({
       radius={radius}
       color={color}
       className={className}
+      onChange={onChange}
     />
   );
 };

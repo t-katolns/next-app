@@ -10,10 +10,10 @@ import styled from "styled-components";
 const CardStyled = styled(Card)`
   margin: 8px;
   position: absolute;
-  z-index: 2;
-  height: calc(100vh - 56px - 16px - 20px);
-  width: 748px;
-  background: red;
+  z-index: 3;
+  height: calc(100vh - 56px - 30px - 20px);
+  width: 810px;
+  background: #f6f7f9;
   border: 1px solid #e1e6ed;
   border-radius: 8px;
 `;
@@ -27,6 +27,21 @@ const BoxStyle = styled(Box)`
 const UserCard = styled(Card)`
   padding: 16px;
   margin: auto;
+  height: calc(100% - 400px);
+`;
+
+const PreviewMessageBox = styled.div`
+  white-space: pre-wrap;
+  padding: 16px;
+  word-wrap: break-word;
+  background: #e0eefa;
+  border-radius: 4px 16px 16px 16px;
+  overflow-y: auto;
+  max-height: 380px;
+  ::-webkit-scrollbar {
+    display: none;
+    -webkit-appearance: none;
+  }
 `;
 
 type Props = {
@@ -35,25 +50,30 @@ type Props = {
   company: string;
   job: string;
   message: string;
+  closePreviewCard: () => void;
 };
 
 export const PreviewCard: FunctionComponent<Props> = ({
   name,
-  age,
   company,
   job,
   message,
+  closePreviewCard,
 }) => {
   return (
     <CardStyled>
-      <img src="images/close.svg" />
+      <img
+        src="images/close.svg"
+        style={{ display: "block", marginLeft: "auto" }}
+        onClick={closePreviewCard}
+      />
       <Typography size={20} height={30} align={"center"}>
         プレビュー
       </Typography>
-      <BoxStyle mt={20} />
-      <Typography align={"center"}>メッセージが表示されます</Typography>
-      <Box mt={20} />
-      <UserCard width={343} height={513}>
+      <BoxStyle mb={20} />
+      <Typography align={"center"}>メッセージが表示される</Typography>
+      <Box mb={20} />
+      <UserCard width={380}>
         <Grid height={100}>
           <GridItem theme={{ column: "1/3", row: "1/12" }}>
             <RoundedIcon url={"images/test.jpg"} size={80} />
@@ -75,6 +95,7 @@ export const PreviewCard: FunctionComponent<Props> = ({
             <img src="images/user/dot.svg" />
           </GridItem>
         </Grid>
+        <PreviewMessageBox>{message}</PreviewMessageBox>
       </UserCard>
     </CardStyled>
   );

@@ -1,17 +1,24 @@
 import { Label } from "components/atoms/Label";
 import { RoundedIcon } from "components/atoms/RoundedIcon";
 import { GridItem } from "components/layouts/GridItem";
+import { Area, Purposes } from "domain/profile";
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
 const Grid = styled.div`
   display: grid;
-  height: 100px;
+  height: 172px;
   grid-row-gap: 7px;
   grid-column-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  border-bottom: solid 1px;
+`;
+
+const MediaGridItem = styled(GridItem)`
+  @media screen and (min-width: 450px) {
+    color: red;
+    grid-auto-flow: row;
+  }
 `;
 
 const LabelStyle = styled(Label)`
@@ -24,25 +31,26 @@ const LabelStyle = styled(Label)`
 
 type Props = {
   name: string;
-  job: string;
-  company: string;
-  area: string;
-  count: number;
+  headline: string;
+  area: Area;
+  reviewsCount: number;
+  purpose?: Purposes;
   img: string;
+  isShowReviewModal: () => void;
 };
 
 export const ProfileHeader: FunctionComponent<Props> = ({
   name,
-  job,
-  company,
+  headline,
   area,
-  count,
+  reviewsCount,
   img,
+  isShowReviewModal,
 }) => {
   return (
     <Grid>
       <GridItem theme={{ column: "1/2", row: "1/12" }}>
-        <RoundedIcon size={90} url="/images/test.jpg" />
+        <RoundedIcon size={90} url={img} />
       </GridItem>
       <GridItem theme={{ column: "2/5", row: "2/3" }}>
         <LabelStyle weight={700} size={16} height={24}>
@@ -51,21 +59,24 @@ export const ProfileHeader: FunctionComponent<Props> = ({
       </GridItem>
       <GridItem theme={{ column: "2/5", row: "3/4" }}>
         <LabelStyle size={12} height={18}>
-          {job} / {company}
+          {headline}
         </LabelStyle>
       </GridItem>
       <GridItem theme={{ column: "2/6", row: "4/5" }}>
         <LabelStyle size={12} height={14} color={"#525E6D"}>
           <img src="/images/user/location.svg" />
-          {area}
+          {area.country} / {area.adminArea} / {area.locality}
         </LabelStyle>
       </GridItem>
       <GridItem theme={{ column: "2/6", row: "5/6" }}>
         <LabelStyle size={12} height={18} weight={500}>
-          {count}
-          <img src="/images/user/yamagata.svg" />
+          {reviewsCount}
+          <img src="/images/user/yamagata.svg" onClick={isShowReviewModal} />
         </LabelStyle>
       </GridItem>
+      <MediaGridItem theme={{ column: "9/10", row: "7/9" }}>
+        <img src="images/user/question.svg" />
+      </MediaGridItem>
     </Grid>
   );
 };
