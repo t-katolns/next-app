@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Check = styled.div`
   position: relative;
@@ -26,7 +26,7 @@ const Check = styled.div`
     transition: 0.4s;
     box-sizing: border-box;
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 20px;
       height: 20px;

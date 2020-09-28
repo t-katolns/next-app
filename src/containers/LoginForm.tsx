@@ -1,7 +1,7 @@
 import { Card } from "components/atoms/Card";
 import { Typography } from "components/atoms/Typography";
 import { Flex } from "components/layouts/Flex";
-import { Echange } from "domain/type";
+import { EIchange } from "domain/type";
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
@@ -73,9 +73,10 @@ const Button = styled.div<{ disabled: boolean }>`
 `;
 
 type Props = {
-  loginHandleInputChange: (e: Echange) => void;
-  passwordHandleInputChange: (e: Echange) => void;
+  loginHandleInputChange: (e: EIchange) => void;
+  passwordHandleInputChange: (e: EIchange) => void;
   onChangePassIcon: () => void;
+  onClickLogin: () => void;
   typeName: string;
   isShowPassword: boolean;
   disabled: boolean;
@@ -85,6 +86,7 @@ export const LoginForm: FunctionComponent<Props> = ({
   loginHandleInputChange,
   passwordHandleInputChange,
   onChangePassIcon,
+  onClickLogin,
   isShowPassword,
   typeName,
   disabled,
@@ -112,7 +114,9 @@ export const LoginForm: FunctionComponent<Props> = ({
             onChange={passwordHandleInputChange}
           />
         </PasswordTextField>
-        <Button disabled={disabled}> ログイン</Button>
+        <Button disabled={disabled} onClick={onClickLogin}>
+          ログイン
+        </Button>
       </CardStyled>
     </Flex>
   );

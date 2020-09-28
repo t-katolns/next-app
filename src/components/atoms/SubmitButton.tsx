@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Button = styled.button`
   border: 1px solid gray;

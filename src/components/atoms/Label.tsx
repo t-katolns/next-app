@@ -1,18 +1,22 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Text = styled.div<{
+  width: number;
   weight: number;
   size: number;
   height: number;
   color: string;
+  background: string;
 }>`
   margin: 0;
   font-family: Noto Sans CJK JP;
+  width: ${(props) => props.width}px;
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size}px;
   line-height: ${(props) => props.height}px;
   color: ${(props) => props.color};
+  background: ${(props) => props.background};
 `;
 
 Text.defaultProps = {
@@ -26,6 +30,8 @@ type Props = {
   size?: number;
   height?: number;
   color?: string;
+  background?: string;
+  width?: number;
   className?: string;
 };
 
@@ -34,6 +40,8 @@ export const Label: FunctionComponent<Props> = ({
   size,
   height,
   color,
+  background,
+  width,
   children,
   className,
 }) => {
@@ -43,6 +51,8 @@ export const Label: FunctionComponent<Props> = ({
       size={size}
       height={height}
       color={color}
+      background={background}
+      width={width}
       className={className}
     >
       {children}

@@ -1,7 +1,7 @@
-import { Switch } from "components/atoms/Switch";
-import { Typography } from "components/atoms/Typography";
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import { Switch } from 'components/atoms/Switch';
+import { Typography } from 'components/atoms/Typography';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Div = styled.div`
   display: flex;

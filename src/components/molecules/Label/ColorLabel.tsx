@@ -1,6 +1,6 @@
-import { Label } from "components/atoms/Label";
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import { Label } from 'components/atoms/Label';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const LabelStyle = styled(Label)<{
   background: string;

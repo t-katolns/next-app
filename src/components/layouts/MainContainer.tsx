@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Main = styled.main`
   padding-left: 50px;
   display: grid;
-  grid-template-columns: minmax(160px, 400px) minmax(160px, 400px) 1fr;
+  grid-template-columns: minmax(160px, 430px) minmax(160px, 430px) 1fr;
   overflow: hidden;
 `;
 

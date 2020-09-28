@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Div = styled.div<{ width: number; height: number }>`
   padding: 16px;
@@ -8,7 +8,6 @@ const Div = styled.div<{ width: number; height: number }>`
   background: #ffffff;
   box-shadow: 0px 1px 4px rgba(109, 123, 143, 0.12),
     0px 4px 24px rgba(109, 123, 143, 0.25);
-  border-radius: 4px;
 `;
 
 type Props = {

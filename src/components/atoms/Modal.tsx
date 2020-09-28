@@ -1,12 +1,15 @@
-import { Portal } from "components/atoms/Portal";
-import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import { Portal } from 'components/atoms/Portal';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+
+type TOberFlow = 'auto' | 'hidden' | 'scroll';
 
 const ModalStyle = styled.div<{
   padding: number;
   width: number;
   height: number;
   radius: number;
+  overflowY: TOberFlow;
 }>`
   position: fixed;
   top: 50%;
@@ -19,15 +22,16 @@ const ModalStyle = styled.div<{
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   border-radius: ${(props) => props.radius}px;
+  overflow-y: ${(props) => props.overflowY};
 `;
 
 const OVERLAY_STYLES = {
-  position: "fixed",
+  position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: "rgba(109, 123, 143, 0.7)",
+  backgroundColor: 'rgba(109, 123, 143, 0.7)',
   zIndex: 1000,
 };
 
@@ -36,6 +40,7 @@ type Props = {
   width: number;
   height: number;
   radius?: number;
+  overflowY?: TOberFlow;
 };
 
 export const Modal: FunctionComponent<Props> = ({
@@ -43,6 +48,7 @@ export const Modal: FunctionComponent<Props> = ({
   width,
   height,
   radius,
+  overflowY,
   children,
 }) => {
   if (!process.browser) return null;
@@ -54,6 +60,7 @@ export const Modal: FunctionComponent<Props> = ({
         width={width}
         height={height}
         radius={radius}
+        overflowY={overflowY}
       >
         {children}
       </ModalStyle>

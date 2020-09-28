@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
+import { FunctionComponent } from 'react';
+import styled from 'styled-components';
 
 const Div = styled.div<{
   height: number;
@@ -15,7 +15,7 @@ const Div = styled.div<{
 `;
 
 type Props = {
-  height: number;
+  height?: number;
   columnSpacing?: number;
   rowSpacing?: number;
 };

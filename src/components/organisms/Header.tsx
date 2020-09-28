@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const HeadLayout = styled.header`
   width: 100%;
-  background: #0000cd;
   box-shadow: 0px 1px 0px #e1e6ed;
   font-family: Noto Sans CJK JP;
   font-size: 20px;

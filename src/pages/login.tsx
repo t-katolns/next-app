@@ -1,13 +1,12 @@
-import { Typography } from "components/atoms/Typography";
+import asyncLogin from "apis/asyncLogin";
 import { Header } from "components/organisms/Header";
 import { LoginForm } from "containers/LoginForm";
-import { Echange } from "domain/type";
+import { EIchange } from "domain/type";
+import Router from "next/router";
 import React, { FunctionComponent, useState } from "react";
-import styled from "styled-components";
+import AuthService from "utils/AuthService";
 
-const TypographyStyled = styled(Typography)`
-  margin: auto;
-`;
+const auth = new AuthService();
 
 interface IState {
   mailAddress: string;
@@ -27,41 +26,25 @@ const Login: FunctionComponent = () => {
   });
   const MAIl_ADDRESS_VALIDATOR = /^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/i;
   const PASSWORD_VALIDATOR = /^[a-zA-Z0-9!-/:-@¥[-`{-~]{6,100}$/i;
-  // ボタンのバリデーション
+  // ボタンのバリデーション相談
   const isButtonDisabled =
     state.mailAddress.match(MAIl_ADDRESS_VALIDATOR) &&
     state.password.match(PASSWORD_VALIDATOR);
 
-  const loginhandleInputChange = (e: Echange) => {
-    if (isButtonDisabled) {
-      setState({
-        ...state,
-        mailAddress: e.target.value,
-        disabled: isButtonDisabled,
-      });
-    } else {
-      setState({
-        ...state,
-        mailAddress: e.target.value,
-        disabled: isButtonDisabled,
-      });
-    }
+  const loginhandleInputChange = (e: EIchange) => {
+    setState({
+      ...state,
+      mailAddress: e.target.value,
+      disabled: isButtonDisabled,
+    });
   };
 
-  const PasswordhandleInputChange = (e: Echange) => {
-    if (isButtonDisabled) {
-      setState({
-        ...state,
-        password: e.target.value,
-        disabled: isButtonDisabled,
-      });
-    } else {
-      setState({
-        ...state,
-        password: e.target.value,
-        disabled: isButtonDisabled,
-      });
-    }
+  const PasswordhandleInputChange = (e: EIchange) => {
+    setState({
+      ...state,
+      password: e.target.value,
+      disabled: isButtonDisabled,
+    });
   };
 
   const onChangePassIcon = () => {
@@ -70,6 +53,17 @@ const Login: FunctionComponent = () => {
     } else {
       setState({ ...state, isShowPassword: true, typeName: "text" });
     }
+  };
+
+  const onClickLogin = () => {
+    asyncLogin(state.mailAddress, state.password)
+      .then((res) => {
+        auth.setLoginInformation(res);
+        Router.push("/user");
+      })
+      .catch((e) => {
+        alert(e.error);
+      });
   };
 
   return (
@@ -82,10 +76,8 @@ const Login: FunctionComponent = () => {
         isShowPassword={state.isShowPassword}
         typeName={state.typeName}
         disabled={state.disabled}
+        onClickLogin={onClickLogin}
       ></LoginForm>
-      <TypographyStyled weight={500} size={14}>
-        t-katlon
-      </TypographyStyled>
     </>
   );
 };
