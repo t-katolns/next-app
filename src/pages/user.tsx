@@ -7,7 +7,6 @@ import { Header } from "components/organisms/Header";
 import Sidebar from "components/organisms/Sidebar";
 import { UserListComponent } from "containers/UserListComponent";
 import { UserProfileComponent } from "containers/UserProfileComponent";
-import { IProfile } from "domain/profile";
 import { initialSearch, ISearch } from "domain/search";
 import { EAchange, EIchange } from "domain/type";
 import React, { FunctionComponent, useState } from "react";
@@ -41,7 +40,6 @@ const SectionMessages = styled.section`
 
 interface IState {
   profileId: number;
-  users: IProfile[];
   page: number;
   cardState: string;
   previewCardState: boolean;
@@ -55,7 +53,6 @@ const User: FunctionComponent = () => {
   const [state, setState] = useState<IState>({
     searchState: initialSearch,
     profileId: 0,
-    users: [],
     page: 1,
     cardState: "",
     previewCardState: false,
