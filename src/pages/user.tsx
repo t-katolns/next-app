@@ -66,10 +66,6 @@ const User: FunctionComponent = () => {
     setState({ ...state, ...{ searchState: { [key]: e.target.value } } });
   };
 
-  const usersPageNation = () => {
-    setState({ ...state, page: state.page + 1 });
-  };
-
   // profile
   const onClickUser = (id: number) => {
     setState({ ...state, profileId: id });
@@ -143,7 +139,6 @@ const User: FunctionComponent = () => {
             profileId={state.profileId}
             page={state.page}
             onClickUser={onClickUser}
-            usersPageNation={usersPageNation}
           />
         </SectionUsers>
         <SectionMessages>

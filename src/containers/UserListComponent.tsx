@@ -1,21 +1,30 @@
 import { useUserList } from "apis/hooks/useUserList";
 import { SkeletonProfile } from "components/molecules/Skeleton/SkeletonProfile";
 import { UserList } from "components/organisms/user/UserList";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 type Props = {
   profileId: number;
   page: number;
   onClickUser: (id: number) => void;
-  usersPageNation: () => void;
 };
 export const UserListComponent: FunctionComponent<Props> = ({
   profileId,
   page,
   onClickUser,
-  usersPageNation,
 }) => {
-  const [userList, setUserList] = useState([]);
-  const { data, isLoading, error } = useUserList(page);
+  const {
+    data,
+    error,
+    mutate,
+    size,
+    setSize,
+    isValidating,
+    isLoading,
+  } = useUserList(page);
+  const userList = data[0].users ? [].concat(...data[0].users) : [];
+  const pageNate = () => {
+    setSize(size + 1);
+  };
   if (isLoading || data === undefined) {
     return <SkeletonProfile></SkeletonProfile>;
   }
@@ -23,17 +32,14 @@ export const UserListComponent: FunctionComponent<Props> = ({
     <div>aaaaaaaaa</div>;
   }
   if (profileId === 0) {
-    setUserList(data.users);
-    onClickUser(data.users[0].id);
-  } else {
-    console.log("aaaaaaaaaaaaaa");
-    setUserList(data.users);
+    onClickUser(data[0].users[0].id);
   }
+
   return (
     <UserList
       users={userList}
       onClickUser={onClickUser}
-      usersPageNation={usersPageNation}
+      pageNate={pageNate}
     ></UserList>
   );
 };

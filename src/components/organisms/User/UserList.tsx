@@ -9,13 +9,13 @@ import React, { FunctionComponent } from "react";
 type Props = {
   users: IProfile[];
   onClickUser: (id: number) => void;
-  usersPageNation: () => void;
+  pageNate: () => void;
 };
 
 export const UserList: FunctionComponent<Props> = ({
   users,
   onClickUser,
-  usersPageNation,
+  pageNate,
 }) => {
   return (
     <>
@@ -35,7 +35,7 @@ export const UserList: FunctionComponent<Props> = ({
           />
         </div>
       ))}
-      <button onClick={usersPageNation}>続きを表示</button>
+      <button onClick={pageNate}>続きを表示</button>
     </>
   );
 };
