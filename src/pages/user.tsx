@@ -1,14 +1,11 @@
 // ログインチェック
-import { useUserList } from "apis/hooks/useUserList";
 import { Display } from "components/atoms/Display";
 import { MainContainer } from "components/layouts/MainContainer";
 import { PreviewCard } from "components/molecules/Card/PreviewCard";
 import { ReviewModal } from "components/molecules/Modal/ReviewModal";
-import { SkeletonProfile } from "components/molecules/Skeleton/SkeletonProfile";
 import { Header } from "components/organisms/Header";
 import Sidebar from "components/organisms/Sidebar";
-// import { SearchList } from "components/organisms/user/SearchList";
-import { UserList } from "components/organisms/user/UserList";
+import { UserListComponent } from "containers/UserListComponent";
 import { UserProfileComponent } from "containers/UserProfileComponent";
 import { IProfile } from "domain/profile";
 import { initialSearch, ISearch } from "domain/search";
@@ -81,33 +78,6 @@ const User: FunctionComponent = () => {
     setState({ ...state, profileId: id });
   };
 
-  const UserListComponent = () => {
-    const { data, isLoading, error } = useUserList(state.page);
-    if (isLoading || data === undefined) {
-      return <SkeletonProfile></SkeletonProfile>;
-    }
-    if (error) {
-      <div>aaaaaaaaa</div>;
-    }
-    if (state.profileId === 0) {
-      const id = data.users[0].id;
-      setState({ ...state, profileId: id, users: data.users });
-    } else {
-      console.log("aaaaaaaaaaaaaa");
-      setState({
-        ...state,
-        users: [...state.users, data.users],
-      });
-    }
-    return (
-      <UserList
-        users={data.users}
-        onClickUser={onClickUser}
-        usersPageNation={usersPageNation}
-      ></UserList>
-    );
-  };
-
   const isShowSearchCard = (name: string) => {
     if (state.cardState === "") {
       setState({ ...state, cardState: name });
@@ -172,7 +142,12 @@ const User: FunctionComponent = () => {
           ></SearchList> */}
         </SectionSearch>
         <SectionUsers>
-          <UserListComponent />
+          <UserListComponent
+            profileId={state.profileId}
+            page={state.page}
+            onClickUser={onClickUser}
+            usersPageNation={usersPageNation}
+          />
         </SectionUsers>
         <SectionMessages>
           <UserProfileComponent
