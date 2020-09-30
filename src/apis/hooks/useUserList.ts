@@ -21,9 +21,7 @@ const lang = auth.getDefaultLang();
 const perPage = 10;
 
 export const useUserList = (page: number) => {
-  const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite<
-    IUsers
-  >(
+  const { data, error, size, setSize } = useSWRInfinite<IUsers>(
     (index) =>
       `${userId}/lists/?lang=${lang}&page=${index + 1}&per_page=${perPage}`
   );
