@@ -9,10 +9,9 @@ type Props = {
 };
 export const UserListComponent: FunctionComponent<Props> = ({
   profileId,
-  page,
   onClickUser,
 }) => {
-  const { data, error, size, setSize, isLoading } = useUserList(page);
+  const { data, error, size, setSize, isLoading } = useUserList();
   const userList = data ? [].concat(...data.map((t) => t.users)) || [] : [];
   const pageNate = () => {
     setSize(size + 1);
