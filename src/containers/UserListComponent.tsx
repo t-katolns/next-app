@@ -12,16 +12,8 @@ export const UserListComponent: FunctionComponent<Props> = ({
   page,
   onClickUser,
 }) => {
-  const {
-    data,
-    error,
-    mutate,
-    size,
-    setSize,
-    isValidating,
-    isLoading,
-  } = useUserList(page);
-  const userList = data[0].users ? [].concat(...data[0].users) : [];
+  const { data, error, size, setSize, isLoading } = useUserList(page);
+  const userList = data ? [].concat(...data.map((t) => t.users)) || [] : [];
   const pageNate = () => {
     setSize(size + 1);
   };
