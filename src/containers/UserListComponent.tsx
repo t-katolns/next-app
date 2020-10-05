@@ -7,11 +7,8 @@ type Props = {
   page: number;
   onClickUser: (id: number) => void;
 };
-export const UserListComponent: FunctionComponent<Props> = ({
-  profileId,
-  onClickUser,
-}) => {
-  const { data, error, size, setSize, isLoading } = useUserList();
+export const UserListComponent: FunctionComponent<Props> = ({ profileId, onClickUser }) => {
+  const { data, error, size, setSize, isLoading, isLoadingMore } = useUserList();
   const userList = data ? [].concat(...data.map((t) => t.users)) || [] : [];
   const pageNate = () => {
     setSize(size + 1);
@@ -31,6 +28,7 @@ export const UserListComponent: FunctionComponent<Props> = ({
       users={userList}
       onClickUser={onClickUser}
       pageNate={pageNate}
+      isLoadingMore={isLoadingMore}
     ></UserList>
   );
 };

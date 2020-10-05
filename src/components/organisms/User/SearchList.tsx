@@ -66,20 +66,17 @@ export const SearchList: FunctionComponent<Props> = ({
           active={cardState === "introduction"}
           onClick={() => isShowSearchCard("introduction")}
         >
-          自己紹介
+          名前
           <p>{searchState.introduction}</p>
         </SearchLabel>
         {cardState === "introduction" && (
           <SearchCard
-            name={"自己紹介"}
+            name={"名前"}
             actionName={"introduction"}
             handleInputChange={onChangeSearchWithKey}
           ></SearchCard>
         )}
-        <SearchLabel
-          active={cardState === "area"}
-          onClick={() => isShowSearchCard("area")}
-        >
+        <SearchLabel active={cardState === "area"} onClick={() => isShowSearchCard("area")}>
           エリア
           <p>{searchState.area}</p>
         </SearchLabel>
@@ -90,10 +87,7 @@ export const SearchList: FunctionComponent<Props> = ({
             handleInputChange={onChangeSearchWithKey}
           ></SearchCard>
         )}
-        <SearchLabel
-          active={cardState === "skill"}
-          onClick={() => isShowSearchCard("skill")}
-        >
+        <SearchLabel active={cardState === "skill"} onClick={() => isShowSearchCard("skill")}>
           スキル
           <p>{searchState.skill}</p>
         </SearchLabel>
@@ -104,10 +98,7 @@ export const SearchList: FunctionComponent<Props> = ({
             handleInputChange={onChangeSearchWithKey}
           ></SearchCard>
         )}
-        <SearchLabel
-          active={cardState === "language"}
-          onClick={() => isShowSearchCard("language")}
-        >
+        <SearchLabel active={cardState === "language"} onClick={() => isShowSearchCard("language")}>
           語学
           <p>{searchState.language}</p>
         </SearchLabel>

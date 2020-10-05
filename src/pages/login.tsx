@@ -28,8 +28,7 @@ const Login: FunctionComponent = () => {
   const PASSWORD_VALIDATOR = /^[a-zA-Z0-9!-/:-@¥[-`{-~]{6,100}$/i;
   // ボタンのバリデーション相談
   const isButtonDisabled =
-    state.mailAddress.match(MAIl_ADDRESS_VALIDATOR) &&
-    state.password.match(PASSWORD_VALIDATOR);
+    state.mailAddress.match(MAIl_ADDRESS_VALIDATOR) && state.password.match(PASSWORD_VALIDATOR);
 
   const loginhandleInputChange = (e: EIchange) => {
     setState({

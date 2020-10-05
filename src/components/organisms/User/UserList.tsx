@@ -10,12 +10,14 @@ type Props = {
   users: IProfile[];
   onClickUser: (id: number) => void;
   pageNate: () => void;
+  isLoadingMore: boolean;
 };
 
 export const UserList: FunctionComponent<Props> = ({
   users,
   onClickUser,
   pageNate,
+  isLoadingMore,
 }) => {
   return (
     <>
@@ -24,10 +26,9 @@ export const UserList: FunctionComponent<Props> = ({
         <Sort />
       </Flex>
       <Box mb={10} />
-      {users.map((user, i) => (
-        <div key={i} onClick={() => onClickUser(user.id)}>
+      {users.map((user) => (
+        <div key={user.id} onClick={() => onClickUser(user.id)}>
           <User
-            key={i}
             name={user.name}
             job={user.headlineContent.subHeadline}
             company={user.headlineContent.handline}
@@ -35,7 +36,9 @@ export const UserList: FunctionComponent<Props> = ({
           />
         </div>
       ))}
-      <button onClick={pageNate}>続きを表示</button>
+      <button disabled={isLoadingMore} onClick={pageNate}>
+        続きを表示
+      </button>
     </>
   );
 };
