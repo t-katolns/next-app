@@ -5,6 +5,7 @@ import { PreviewCard } from "components/molecules/Card/PreviewCard";
 import { ReviewModal } from "components/molecules/Modal/ReviewModal";
 import { Header } from "components/organisms/Header";
 import Sidebar from "components/organisms/Sidebar";
+import { SearchList } from "components/organisms/user/SearchList";
 import { UserListComponent } from "containers/UserListComponent";
 import { UserProfileComponent } from "containers/UserProfileComponent";
 import { initialSearch, ISearch } from "domain/search";
@@ -127,12 +128,12 @@ const User: FunctionComponent = () => {
           />
         </Display>
         <SectionSearch>
-          {/* <SearchList
+          <SearchList
             cardState={state.cardState}
             isShowSearchCard={isShowSearchCard}
             searchState={state.searchState}
             onChangeSearchWithKey={onChangeSearchWithKey}
-          ></SearchList> */}
+          ></SearchList>
         </SectionSearch>
         <SectionUsers>
           <UserListComponent
