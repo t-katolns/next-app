@@ -1,8 +1,8 @@
-import { Card } from 'components/atoms/Card';
-import { SwitchLabel } from 'components/molecules/Switch/SwitchLabel';
-import { EIchange } from 'domain/type';
-import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { Card } from "components/atoms/Card";
+import { SwitchLabel } from "components/molecules/Switch/SwitchLabel";
+import { EIchange } from "domain/type";
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
 
 const Input = styled.input`
   width: 100%;
@@ -27,22 +27,13 @@ type Props = {
   handleInputChange: (e: EIchange, key: string) => void;
 };
 
-export const SearchCard: FunctionComponent<Props> = ({
-  name,
-  actionName,
-  handleInputChange,
-}) => {
+export const SearchCard: FunctionComponent<Props> = ({ name, actionName, handleInputChange }) => {
   return (
-    <div style={{ position: 'absolute', width: '100%', zIndex: 2 }}>
+    <div style={{ position: "absolute", width: "100%", zIndex: 2 }}>
       <Card height={140}>
-        <Input
-          placeholder={name + 'を入力'}
-          onChange={(e) => handleInputChange(e, actionName)}
-        />
+        <Input placeholder={name + "を入力"} onChange={(e) => handleInputChange(e, actionName)} />
         <SearchLabel>
-          ‘|’ (バー) で OR検索、 ‘ ’ (半角スペース) で AND検索ができます。
-          例：「 (A|B) C」と打つと、 「A または B かつ
-          C」に該当する人物が表示されます。
+          ‘|’ (バー) で OR検索、 ‘ ’ (半角スペース) で AND検索ができます。 例：「 (A|B)
         </SearchLabel>
         <SwitchLabel />
       </Card>

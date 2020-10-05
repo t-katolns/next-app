@@ -98,21 +98,14 @@ export const LoginForm: FunctionComponent<Props> = ({
           ログイン情報を入力
         </Typography>
         <TextField>
-          <input
-            placeholder={"メールアドレス"}
-            onChange={loginHandleInputChange}
-          />
+          <input placeholder={"メールアドレス"} onChange={loginHandleInputChange} />
         </TextField>
         <PasswordTextField isShowPassword={isShowPassword}>
           <span onClick={onChangePassIcon}>
             <img src="images/eye.svg" className="eye" />
             <img src="images/eye_slash.svg" className="eye_slash" />
           </span>
-          <input
-            placeholder="password"
-            type={typeName}
-            onChange={passwordHandleInputChange}
-          />
+          <input placeholder="password" type={typeName} onChange={passwordHandleInputChange} />
         </PasswordTextField>
         <Button disabled={disabled} onClick={onClickLogin}>
           ログイン
