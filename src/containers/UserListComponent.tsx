@@ -1,6 +1,10 @@
 import { useUserList } from "apis/hooks/useUserList";
+import { Box } from "components/layouts/Box";
+import { Flex } from "components/layouts/Flex";
+import { CountLabel } from "components/molecules/Label/CountLabel";
 import { SkeletonProfile } from "components/molecules/Skeleton/SkeletonProfile";
-import { UserList } from "components/organisms/user/UserList";
+import { Sort } from "components/molecules/Sort/Sort";
+import { User } from "components/molecules/User/User";
 import React, { FunctionComponent } from "react";
 type Props = {
   profileId: number;
@@ -9,7 +13,7 @@ type Props = {
 };
 export const UserListComponent: FunctionComponent<Props> = ({ profileId, onClickUser }) => {
   const { data, error, size, setSize, isLoading, isLoadingMore } = useUserList();
-  const userList = data ? [].concat(...data.map((t) => t.users)) || [] : [];
+  const users = data ? [].concat(...data.map((t) => t.users)) || [] : [];
   const pageNate = () => {
     setSize(size + 1);
   };
@@ -24,11 +28,25 @@ export const UserListComponent: FunctionComponent<Props> = ({ profileId, onClick
   }
 
   return (
-    <UserList
-      users={userList}
-      onClickUser={onClickUser}
-      pageNate={pageNate}
-      isLoadingMore={isLoadingMore}
-    ></UserList>
+    <>
+      <Flex justifyContent={"space-between"}>
+        <CountLabel ct={"aaa"} st={"aaa"} />
+        <Sort />
+      </Flex>
+      <Box mb={10} />
+      {users.map((user) => (
+        <div key={user.id} onClick={() => onClickUser(user.id)}>
+          <User
+            name={user.name}
+            job={user.headlineContent.subHeadline}
+            company={user.headlineContent.handline}
+            img={user.pictureUrl}
+          />
+        </div>
+      ))}
+      <button disabled={isLoadingMore} onClick={pageNate}>
+        続きを表示
+      </button>
+    </>
   );
 };
