@@ -1,8 +1,8 @@
 import { Label } from "components/atoms/Label";
 import { Typography } from "components/atoms/Typography";
-import { Education } from "components/organisms/Profile/Education";
-import { Language } from "components/organisms/Profile/Language";
-import { Round } from "components/organisms/Profile/Round";
+import { Education } from "components/molecules/Profile/Education";
+import { Language } from "components/molecules/Profile/Language";
+import { Round } from "components/molecules/Profile/Round";
 import { Educations, Interest, Languages, Purposes } from "domain/profile";
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
@@ -71,10 +71,7 @@ export const ProfileBody: FunctionComponent<Props> = ({
       </TypographyStyled>
       {languages.map((language, i) => (
         <LabelStyle key={i}>
-          <Language
-            name={language.language.name}
-            level={language.level.name}
-          ></Language>
+          <Language name={language.language.name} level={language.level.name}></Language>
         </LabelStyle>
       ))}
     </>
