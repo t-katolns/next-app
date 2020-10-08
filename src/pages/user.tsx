@@ -5,7 +5,7 @@ import { PreviewCard } from "components/molecules/Card/PreviewCard";
 import { ReviewModal } from "components/molecules/Modal/ReviewModal";
 import { Header } from "components/organisms/Header";
 import Sidebar from "components/organisms/Sidebar";
-import { SearchList } from "components/organisms/user/SearchList";
+import { SearchList } from "components/organisms/User/SearchList";
 import { UserListComponent } from "containers/UserListComponent";
 import { UserProfileComponent } from "containers/UserProfileComponent";
 import { initialSearch, ISearch } from "domain/search";
@@ -18,6 +18,8 @@ const SectionSearch = styled.section`
   overflow-y: auto;
   padding: 24px 16px;
   border-right: 2px solid #e1e6ed;
+  display: grid;
+  grid-template-rows: 1fr auto;
 `;
 
 const SectionUsers = styled.section`

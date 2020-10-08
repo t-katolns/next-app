@@ -46,62 +46,73 @@ export const SearchList: FunctionComponent<Props> = ({
 }) => {
   return (
     <>
-      <Grid>
-        <Typography weight={500} size={14} height={14}>
-          検索条件
-        </Typography>
-        <img src="/images/search/save.svg" className="item" />
-        <img src="/images/search/close.svg" className="item" />
-      </Grid>
-      <Box mb={16} />
-      <SearchBar placeholderText={"検索"}></SearchBar>
-      <Box mb={20}></Box>
-      <div style={{ position: "relative" }}>
+      <div className="search">
+        <Grid>
+          <Typography weight={500} size={14} height={14}>
+            検索条件
+          </Typography>
+          <img src="/images/search/save.svg" className="item" />
+          <img src="/images/search/close.svg" className="item" />
+        </Grid>
+        <Box mb={16} />
+        <SearchBar placeholderText={"検索"}></SearchBar>
         <Box mb={20}></Box>
-        <Typography weight={700} color={"#A3AFBF"}>
-          プロフィール
-        </Typography>
-        <Box mb={10}></Box>
-        <SearchLabel
-          active={cardState === "introduction"}
-          onClick={() => isShowSearchCard("introduction")}
-        >
-          名前
-          <p>{searchState.introduction}</p>
-        </SearchLabel>
-        {cardState === "introduction" && (
-          <SearchCard
-            name={"名前"}
-            actionName={"introduction"}
-            handleInputChange={onChangeSearchWithKey}
-          ></SearchCard>
-        )}
-        <SearchLabel active={cardState === "area"} onClick={() => isShowSearchCard("area")}>
-          エリア
-          <p>{searchState.area}</p>
-        </SearchLabel>
-        {cardState === "area" && (
-          <SearchCard
-            name={"エリア"}
-            actionName={"area"}
-            handleInputChange={onChangeSearchWithKey}
-          ></SearchCard>
-        )}
-        <SearchLabel active={cardState === "skill"} onClick={() => isShowSearchCard("skill")}>
-          スキル
-          <p>{searchState.skill}</p>
-        </SearchLabel>
-        {cardState === "skill" && (
-          <SearchCard
-            name={"スキル"}
-            actionName={"skill"}
-            handleInputChange={onChangeSearchWithKey}
-          ></SearchCard>
-        )}
-        <SearchLabel active={cardState === "language"} onClick={() => isShowSearchCard("language")}>
-          語学
-          <p>{searchState.language}</p>
-        </SearchLabel>
+        <div style={{ position: "relative" }}>
+          <Box mb={20}></Box>
+          <Typography weight={700} color={"#A3AFBF"}>
+            プロフィール
+          </Typography>
+          <Box mb={10}></Box>
+          <SearchLabel
+            active={cardState === "introduction"}
+            onClick={() => isShowSearchCard("introduction")}
+          >
+            名前
+            <p>{searchState.introduction}</p>
+          </SearchLabel>
+          {cardState === "introduction" && (
+            <SearchCard
+              name={"名前"}
+              actionName={"introduction"}
+              handleInputChange={onChangeSearchWithKey}
+            ></SearchCard>
+          )}
+          <SearchLabel active={cardState === "area"} onClick={() => isShowSearchCard("area")}>
+            エリア
+            <p>{searchState.area}</p>
+          </SearchLabel>
+          {cardState === "area" && (
+            <SearchCard
+              name={"エリア"}
+              actionName={"area"}
+              handleInputChange={onChangeSearchWithKey}
+            ></SearchCard>
+          )}
+          <SearchLabel active={cardState === "skill"} onClick={() => isShowSearchCard("skill")}>
+            スキル
+            <p>{searchState.skill}</p>
+          </SearchLabel>
+          {cardState === "skill" && (
+            <SearchCard
+              name={"スキル"}
+              actionName={"skill"}
+              handleInputChange={onChangeSearchWithKey}
+            ></SearchCard>
+          )}
+          <SearchLabel
+            active={cardState === "language"}
+            onClick={() => isShowSearchCard("language")}
+          >
+            語学
+            <p>{searchState.languages}</p>
+          </SearchLabel>
+        </div>
+        <div className="aaa" style={{ height: "1000px" }}>
+          aaa
+        </div>
+      </div>
+      <div className="button" style={{ height: "100px", background: "#f0f0f0" }}>
+        <button>検索</button>
       </div>
     </>
   );
