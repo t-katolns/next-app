@@ -3,8 +3,8 @@ import { MessageTextField } from "components/atoms/MessageTextField";
 import { Typography } from "components/atoms/Typography";
 import { Flex } from "components/layouts/Flex";
 import { TemplateCard } from "components/molecules/Card/TempplateCard";
-import { ProfileBody } from "components/organisms/Profile/ProfileBody";
-import { ProfileHeader } from "components/organisms/Profile/ProfileHeader";
+import { ProfileBody } from "components/molecules/Profile/ProfileBody";
+import { ProfileHeader } from "components/molecules/Profile/ProfileHeader";
 import { IProfile } from "domain/profile";
 import { EAchange } from "domain/type";
 import React, { FunctionComponent } from "react";
@@ -99,24 +99,14 @@ export const UserProfile: FunctionComponent<Props> = ({
             <Typography size={12} color={"#525E6D"} display={"inline-block"}>
               消費ポイント
             </Typography>
-            <img
-              className="help"
-              src="images/help.svg"
-              style={{ verticalAlign: "middle" }}
-            />
+            <img className="help" src="images/help.svg" style={{ verticalAlign: "middle" }} />
           </div>
           <Flex justifyContent={"space-between"}>
             <div className="count">
               <img src="images/point.svg" />
               <p className="number">3</p>
-              <Typography
-                size={10}
-                weight={500}
-                color={"#525E6D"}
-                display={"inline-block"}
-              >
-                ※スカウトを送ると、ポイントを消費します。
-                消費ポイントはユーザーによって異なります。
+              <Typography size={10} weight={500} color={"#525E6D"} display={"inline-block"}>
+                ※スカウトを送ると、ポイントを消費します。 消費ポイントはユーザーによって異なります。
               </Typography>
             </div>
             <div className="current_point">
