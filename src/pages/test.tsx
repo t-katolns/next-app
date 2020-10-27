@@ -1,9 +1,7 @@
-import { asyncTemplates } from "apis/asyncTemplates";
 import { useMessageTemplates } from "apis/hooks/useMessageTemplates";
 import { Card } from "components/atoms/Card";
 import { Box } from "components/layouts/Box";
 import { Flex } from "components/layouts/Flex";
-import { ITemplate } from "domain/message_templates";
 import React, { FunctionComponent, useState } from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
@@ -43,34 +41,22 @@ const CardStyled = styled(Card)`
 `;
 const Test: FunctionComponent = () => {
   const [redonly, setReadonly] = useState(true);
-  const [templateMessage, setTemplateMessage] = useState<ITemplate>();
-
-  // テンプレートを取得
+  const [currentId, setCurrentId] = useState(0);
   const { templates, templateLoading } = useMessageTemplates();
   if (templateLoading) {
     <div>loding...</div>;
   }
-  // textareaの値を変更した時の処理
-  const handleInpurChange = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    message: ITemplate
-  ) => {};
-  // テンプレートを編集して登録した時の処理
-  const onClickAddTemplateMessage = () => {
-    asyncTemplates(templateMessage.id, templateMessage.body)
-      .then((res) => {
-        // templateMessageに保存する？？
-      })
-      .catch((e) => {
-        alert(e.error);
-      });
+
+  const template = templates.templates[currentId];
+  const body = template.body;
+
+  const onChangePage = (data: any) => {
+    setCurrentId(data.selected);
   };
   return (
     <CardStyled height={340} width={500}>
       <div className="template">
-        <textarea readOnly={redonly} onChange={}>
-          {}
-        </textarea>
+        <textarea readOnly={redonly}>{body}</textarea>
       </div>
       <Flex justifyContent={"flex-end"}>
         <div className="edit">
@@ -86,7 +72,7 @@ const Test: FunctionComponent = () => {
           breakClassName={"break-me"}
           pageCount={5}
           pageRangeDisplayed={5}
-          // onPageChange={(data) => onChangePage(data.selected + 1)}
+          onPageChange={(data) => onChangePage(data)}
           containerClassName={"pagination"}
           activeClassName={"active"}
         />
