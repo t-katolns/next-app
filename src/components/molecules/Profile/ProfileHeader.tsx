@@ -1,7 +1,6 @@
 import { Label } from "components/atoms/Label";
 import { RoundedIcon } from "components/atoms/RoundedIcon";
 import { GridItem } from "components/layouts/GridItem";
-import { Area, Purposes } from "domain/profile";
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
@@ -32,11 +31,9 @@ const LabelStyle = styled(Label)`
 type Props = {
   name: string;
   headline: string;
-  area: Area;
+  area: any;
   reviewsCount: number;
-  purpose?: Purposes;
-  img: string;
-  isShowReviewModal: () => void;
+  purpose?: any;
 };
 
 export const ProfileHeader: FunctionComponent<Props> = ({
@@ -45,12 +42,11 @@ export const ProfileHeader: FunctionComponent<Props> = ({
   area,
   reviewsCount,
   img,
-  isShowReviewModal,
 }) => {
   return (
     <Grid>
       <GridItem theme={{ column: "1/2", row: "1/12" }}>
-        <RoundedIcon size={90} url={img} />
+        <RoundedIcon size={90} />
       </GridItem>
       <GridItem theme={{ column: "2/5", row: "2/3" }}>
         <LabelStyle weight={700} size={16} height={24}>
@@ -65,13 +61,13 @@ export const ProfileHeader: FunctionComponent<Props> = ({
       <GridItem theme={{ column: "2/6", row: "4/5" }}>
         <LabelStyle size={12} height={14} color={"#525E6D"}>
           <img src="/images/user/location.svg" />
-          {area.country} / {area.adminArea} / {area.locality}
+          {area}
         </LabelStyle>
       </GridItem>
       <GridItem theme={{ column: "2/6", row: "5/6" }}>
         <LabelStyle size={12} height={18} weight={500}>
           {reviewsCount}
-          <img src="/images/user/yamagata.svg" onClick={isShowReviewModal} />
+          <img src="/images/user/yamagata.svg" />
         </LabelStyle>
       </GridItem>
       <MediaGridItem theme={{ column: "9/10", row: "7/9" }}>
