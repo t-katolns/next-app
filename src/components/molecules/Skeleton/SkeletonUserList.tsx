@@ -9,10 +9,7 @@ export const SkeletonUserList: FunctionComponent = () => {
     items.push(
       <>
         <Flex>
-          <div
-            className="radius"
-            style={{ width: "110px", height: "80px", marginRight: "30px" }}
-          >
+          <div className="radius" style={{ width: "110px", height: "80px", marginRight: "30px" }}>
             <Skeleton radius={50}></Skeleton>
           </div>
           <div className="square" style={{ width: "100%", height: "20px" }}>
@@ -28,10 +25,7 @@ export const SkeletonUserList: FunctionComponent = () => {
   return (
     <>
       <div style={{ padding: 16 }}>
-        <div
-          className="square-box"
-          style={{ width: "100%", height: "35px", marginBottom: "35px" }}
-        >
+        <div className="square-box" style={{ width: "100%", height: "35px", marginBottom: "35px" }}>
           <Skeleton />
         </div>
         {items}

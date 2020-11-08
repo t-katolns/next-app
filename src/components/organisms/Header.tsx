@@ -7,6 +7,7 @@ const HeadLayout = styled.header`
   font-family: Noto Sans CJK JP;
   font-size: 20px;
   line-height: 30px;
+  background: #f8f8ff;
   .head-text {
     padding-left: 66px;
     padding-top: 14px;

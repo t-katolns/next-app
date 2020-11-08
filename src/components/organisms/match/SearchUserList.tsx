@@ -8,10 +8,7 @@ type Props = {
   isSearchCardOpen: () => void;
 };
 
-export const SearchUserList: FunctionComponent<Props> = ({
-  users,
-  isSearchCardOpen,
-}) => {
+export const SearchUserList: FunctionComponent<Props> = ({ users, isSearchCardOpen }) => {
   return (
     <>
       <SearchBar

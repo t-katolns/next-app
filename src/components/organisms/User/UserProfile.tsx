@@ -97,7 +97,7 @@ export const UserProfile: FunctionComponent<Props> = ({
         <Point>
           <div>
             <Typography size={12} color={"#525E6D"} display={"inline-block"}>
-              消費ポイント
+              ポイント
             </Typography>
             <img className="help" src="images/help.svg" style={{ verticalAlign: "middle" }} />
           </div>
@@ -105,13 +105,16 @@ export const UserProfile: FunctionComponent<Props> = ({
             <div className="count">
               <img src="images/point.svg" />
               <p className="number">3</p>
-              <Typography size={10} weight={500} color={"#525E6D"} display={"inline-block"}>
-                ※スカウトを送ると、ポイントを消費します。 消費ポイントはユーザーによって異なります。
-              </Typography>
+              <Typography
+                size={10}
+                weight={500}
+                color={"#525E6D"}
+                display={"inline-block"}
+              ></Typography>
             </div>
             <div className="current_point">
               <Typography size={9} weight={600} color={"#FFFFFF"}>
-                所持ポイント
+                ポイント
               </Typography>
               <img src="images/white_point.svg" />
               <p className="possession_point">100</p>

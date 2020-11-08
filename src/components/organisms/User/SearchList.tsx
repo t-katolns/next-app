@@ -1,6 +1,7 @@
 import { SearchBar } from "components/atoms/SearchBar";
 import { Typography } from "components/atoms/Typography";
 import { Box } from "components/layouts/Box";
+import { SearchCountDisplayButton } from "components/molecules/Button/SearchCountDisplayButton";
 import { SearchCard } from "components/molecules/Card/SearchCard";
 import { ISearch } from "domain/search";
 import { EIchange } from "domain/type";
@@ -46,7 +47,7 @@ export const SearchList: FunctionComponent<Props> = ({
 }) => {
   return (
     <>
-      <div className="search">
+      <div className="search" style={{ overflow: "auto", padding: "16px 24px" }}>
         <Grid>
           <Typography weight={500} size={14} height={14}>
             検索条件
@@ -107,13 +108,11 @@ export const SearchList: FunctionComponent<Props> = ({
             <p>{searchState.languages}</p>
           </SearchLabel>
         </div>
-        <div className="aaa" style={{ height: "1000px" }}>
-          aaa
-        </div>
       </div>
-      <div className="button" style={{ height: "100px", background: "#f0f0f0" }}>
-        <button>検索</button>
-      </div>
+      <SearchCountDisplayButton
+        searchState={searchState}
+        // onClick={onClickSearchProcess}
+      ></SearchCountDisplayButton>
     </>
   );
 };

@@ -16,7 +16,6 @@ const SectionSearch = styled.section`
   position: relative;
   z-index: 2px;
   overflow-y: auto;
-  padding: 24px 16px;
   border-right: 2px solid #e1e6ed;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -26,7 +25,6 @@ const SectionUsers = styled.section`
   position: relative;
   padding: 24px 10px;
   overflow-y: auto;
-  background: blue;
   border-right: 2px solid #e1e6ed;
   ::-webkit-scrollbar {
     display: none;

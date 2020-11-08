@@ -1,10 +1,10 @@
-import { Card } from 'components/atoms/Card';
-import { Typography } from 'components/atoms/Typography';
-import { Box } from 'components/layouts/Box';
-import { Flex } from 'components/layouts/Flex';
-import React, { FunctionComponent, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import styled from 'styled-components';
+import { Card } from "components/atoms/Card";
+import { Typography } from "components/atoms/Typography";
+import { Box } from "components/layouts/Box";
+import { Flex } from "components/layouts/Flex";
+import React, { FunctionComponent, useState } from "react";
+import ReactPaginate from "react-paginate";
+import styled from "styled-components";
 
 const CardStyled = styled(Card)`
   padding: 16px 20px;
@@ -64,13 +64,12 @@ export const TemplateCard: FunctionComponent<Props> = ({
   isShowPreviewCard,
 }) => {
   const [redonly, setReadonly] = useState(true);
-  const message =
-    'はじめまして！\n xxxと申します。\n私は、xxxxxxxxxxxx という経歴で、xxxxxxx という想いから、現在キャリアアドバイザーとして活動しています。\nプロフィールを拝見して、すごくエネルギッシュな方だなと興味を惹かれました。 \nすぐにご提案できるポジションもありますが、まずはキャリアの棚卸しや壁打ちなど、ざっくばらんにお話するのも面白いかなと考えています。 \nよければぜひ一度お会いしてお話ししましょう！';
+  const message = "はじめまして！\n xxxと申します。";
   return (
     <CardStyled height={341}>
       <Flex>
         <img src="images/template_white.svg" />
-        <Typography weight={500}>スカウトテンプレート</Typography>
+        <Typography weight={500}>テンプレート</Typography>
         <div className="close" onClick={isClose}>
           閉じる
         </div>
@@ -80,23 +79,23 @@ export const TemplateCard: FunctionComponent<Props> = ({
         <textarea readOnly={redonly}>{message}</textarea>
       </div>
       <Box mb={25} />
-      <Flex justifyContent={'flex-end'}>
+      <Flex justifyContent={"flex-end"}>
         <div className="edit">
           <img src="images/edit.svg" onClick={() => setReadonly(false)} />
           <button onClick={() => isShowPreviewCard(message)}>適応</button>
         </div>
       </Flex>
       <Box mb={10} />
-      <div className="pagenate circle-ripple" style={{ textAlign: 'center' }}>
+      <div className="pagenate circle-ripple" style={{ textAlign: "center" }}>
         <ReactPaginate
-          previousLabel={'<'}
-          nextLabel={'>'}
-          breakClassName={'break-me'}
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakClassName={"break-me"}
           pageCount={5}
           pageRangeDisplayed={5}
           // onPageChange={(data) => onChangePage(data.selected + 1)}
-          containerClassName={'pagination'}
-          activeClassName={'active'}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
         />
       </div>
     </CardStyled>

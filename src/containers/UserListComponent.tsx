@@ -2,7 +2,7 @@ import { useUserList } from "apis/hooks/useUserList";
 import { Box } from "components/layouts/Box";
 import { Flex } from "components/layouts/Flex";
 import { CountLabel } from "components/molecules/Label/CountLabel";
-import { SkeletonProfile } from "components/molecules/Skeleton/SkeletonProfile";
+import { SkeletonUserList } from "components/molecules/Skeleton/SkeletonUserList";
 import { Sort } from "components/molecules/Sort/Sort";
 import { User } from "components/molecules/User/User";
 import React, { FunctionComponent } from "react";
@@ -18,7 +18,7 @@ export const UserListComponent: FunctionComponent<Props> = ({ profileId, onClick
     setSize(size + 1);
   };
   if (isLoading || data === undefined) {
-    return <SkeletonProfile></SkeletonProfile>;
+    return <SkeletonUserList />;
   }
   if (error) {
     <div>aaaaaaaaa</div>;

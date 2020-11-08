@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import { SWRConfig } from "swr";
 import AuthService from "utils/AuthService";
 import "../styles/paginate.scss";
+import "../styles/style.scss";
 
 const GlobalStyle = createGlobalStyle`
 /* Todo: ここでいわゆるリセットCSSを流す */
