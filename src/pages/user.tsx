@@ -1,5 +1,6 @@
 // ログインチェック
 import { Display } from "components/atoms/Display";
+import { SnackBar } from "components/atoms/SnackBar";
 import { MainContainer } from "components/layouts/MainContainer";
 import { PreviewCard } from "components/molecules/Card/PreviewCard";
 import { ReviewModal } from "components/molecules/Modal/ReviewModal";
@@ -48,6 +49,7 @@ interface IState {
   searchState: ISearch;
   reviewModal: boolean;
   isTemplateCard: boolean;
+  isSnackBar: boolean;
 }
 
 const User: FunctionComponent = () => {
@@ -60,6 +62,7 @@ const User: FunctionComponent = () => {
     message: "",
     reviewModal: false,
     isTemplateCard: false,
+    isSnackBar: true,
   });
 
   // seachList
@@ -108,6 +111,9 @@ const User: FunctionComponent = () => {
     <>
       <Header pageName="検索"></Header>
       <Sidebar />
+      <Display enabled={state.isSnackBar}>
+        <SnackBar text={"aaa"} />
+      </Display>
       <MainContainer>
         <Display enabled={state.reviewModal}>
           <ReviewModal
