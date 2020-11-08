@@ -25,7 +25,6 @@ const SectionUsers = styled.section`
   position: relative;
   padding: 24px 10px;
   overflow-y: auto;
-  background: blue;
   border-right: 2px solid #e1e6ed;
   ::-webkit-scrollbar {
     display: none;

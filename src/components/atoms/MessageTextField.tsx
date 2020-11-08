@@ -1,7 +1,7 @@
-import { MessageTextArea } from 'components/molecules/TextArea/MessageTextArea';
-import { EAchange } from 'domain/type';
-import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { MessageTextArea } from "components/molecules/TextArea/MessageTextArea";
+import { EAchange } from "domain/type";
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
 
 const Section = styled.div`
   position: relative;
@@ -34,15 +34,12 @@ export const MessageTextField: FunctionComponent<Props> = ({
     <Section>
       <MessageTextArea
         text={message}
-        placeholder={'スカウトメッセージを入力'}
+        placeholder={"メッセージを入力"}
         isShowPreviewCard={isShowPreviewCard}
         isShowTemplateCard={isShowTemplateCard}
       />
       <div className="send_button">
-        <img
-          className="send"
-          src={message === '' ? 'images/send.svg' : 'images/send_blue.svg'}
-        />
+        <img className="send" src={message === "" ? "images/send.svg" : "images/send_blue.svg"} />
       </div>
     </Section>
   );

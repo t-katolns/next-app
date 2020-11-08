@@ -12,6 +12,7 @@ const SidebarStyle = styled.nav`
   flex-direction: column;
   width: 50px;
   height: 100vh;
+  background: #f8f8ff;
   box-shadow: 1px 0px 0px #e1e6ed;
   z-index: 10;
   :hover {
@@ -64,15 +65,11 @@ export const Sidebar: FunctionComponent = () => {
       <Menu>
         <List>
           <img src="/images/navbar/scout.svg" />
-          <span>ユーザー</span>
+          <span>ユーザー画面</span>
         </List>
         <List>
           <img src="/images/navbar/matching.svg" />
-          <span>マッチング</span>
-        </List>
-        <List>
-          <img src="/images/navbar/vector.svg" />
-          <span>プロフィール</span>
+          <span>マッチング画面</span>
         </List>
         <List onClick={handleLogout}>
           <span>ログアウト</span>
